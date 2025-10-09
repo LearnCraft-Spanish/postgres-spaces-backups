@@ -4,7 +4,7 @@ Use App Platform Scheduled Jobs to automatically backup Managed PostgreSQL datab
 
 ## Deploy to DigitalOcean App Platform
 
-[![Deploy to DigitalOcean](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/ddebarros/postgres-spaces-backups/tree/main)
+[![Deploy to DigitalOcean](https://www.deploytodo.com/do-btn-blue.svg)](https://cloud.digitalocean.com/apps/new?repo=https://github.com/digitalocean/postgres-spaces-backups/tree/main)
 
 ## Configuration
 
