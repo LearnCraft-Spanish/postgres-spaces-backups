@@ -5,10 +5,10 @@ spec:
     dockerfile_path: Dockerfile
     git:
       branch: main
-      repo_clone_url: https://github.com/digitalocean/postgres-spaces-backups.git
+      repo_clone_url: https://github.com/VirtualBlakeWillis/postgres-spaces-backups.git
     kind: SCHEDULED
     schedule:
-      cron: 0/60 * * * *
+      cron: 0 5 * * 0,3
     envs:
       - key: DO_SPACES_ACCESS_KEY_ID
         value: <REQUIRED>
