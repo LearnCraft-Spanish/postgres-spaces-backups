@@ -11,7 +11,7 @@ import path from "path";
 import os from "os";
 
 import { env } from "./env.js";
-import { createMD5 } from "./utils.js";
+import { createMD5, resolveSpacesLocation } from "./utils.js";
 
 const uploadToSpaces = async ({
   name,
@@ -23,22 +23,20 @@ const uploadToSpaces = async ({
   console.log("👉 Uploading backup to DigitalOcean Spaces...");
 
   const bucket = env.DO_SPACES_BUCKET;
+  const { region, endpoint } = resolveSpacesLocation(env.DO_SPACES_ENDPOINT);
 
   const clientOptions: S3ClientConfig = {
-    region: "__REGION__",
+    region,
     forcePathStyle: true,
+    endpoint,
     credentials: {
       accessKeyId: env.DO_SPACES_ACCESS_KEY_ID,
       secretAccessKey: env.DO_SPACES_SECRET_ACCESS_KEY,
     },
   };
 
-  if (env.DO_SPACES_ENDPOINT) {
-    console.log(
-      `✅ Using DigitalOcean Spaces endpoint: ${env.DO_SPACES_ENDPOINT}`
-    );
-    clientOptions.endpoint = env.DO_SPACES_ENDPOINT;
-  }
+  console.log(`✅ Using DigitalOcean Spaces endpoint: ${endpoint}`);
+  console.log(`✅ Using DigitalOcean Spaces region: ${region}`);
 
   if (env.BUCKET_SUBFOLDER) {
     name = env.BUCKET_SUBFOLDER + "/" + name;
